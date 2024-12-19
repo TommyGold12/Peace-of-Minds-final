@@ -1,0 +1,537 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0px auto;
+}
+
+/**NAVLINE*/
+.navline {
+  padding: 10px;
+}
+
+.navline .container {
+  display: flex;
+  align-items: center;
+}
+
+.navlineLogo {
+  display: flex;
+}
+
+.navlineLogo img {
+  width: 48px;
+}
+
+.logoText p {
+  margin: 0;
+  font-weight: bold;
+  color: rgb(92, 92, 92);
+}
+
+.logoText b {
+  color: rgb(40, 4, 220);
+  font-size: 18px;
+}
+
+.navlineLinks {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navlineLinks a {
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 18px;
+  color: rgb(92, 92, 92);
+}
+
+.navlineLinks a:active {
+  transform: scale(0.96);
+}
+
+.navlineLinks a:hover {
+  font-style: italic;
+}
+
+/**HEADER*/
+.backgroundImg {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.backgroundImg .container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.hero {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 45%;
+  height: 100%;
+  background-color: rgba(0, 137, 255, 0.8);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio {
+  width: 40%;
+  color: #fff;
+}
+
+.bio h1 {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-size: 36px;
+}
+
+.bio p {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.backgroundImg img {
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.alignCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.findHome {
+  border-radius: 20px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.findHome:hover {
+  background-color: #fff;
+  color: rgb(0, 105, 255);
+}
+
+/**ABOUT*/
+.about {
+  background-color: rgb(134, 134, 134, 0.1);
+  padding: 25px 0;
+  padding-bottom: 100px;
+}
+
+.about h2 {
+  color: rgb(60, 60, 60);
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.flexCard {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  background-color: #fff;
+  margin: 0 5px;
+  border-radius: 5px;
+  padding: 20px 10px;
+  width: 25%;
+  text-align: center;
+}
+
+.card img {
+  width: 52px;
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: rgb(60, 60, 60);
+}
+
+.card:first-child {
+  margin-left: 0;
+}
+.card:last-child {
+  margin-right: 0;
+}
+
+.card p {
+  color: rgb(105, 105, 105);
+}
+
+/**OFFERS FILTER*/
+.offersFilter {
+  padding: 25px 0;
+}
+
+.filterWindow {
+  position: relative;
+  top: -50px;
+  background-color: rgb(230, 230, 230);
+  padding: 15px;
+  border: 1px solid rgb(0, 105, 255, 0.2);
+  border-radius: 5px;
+  box-shadow: 8px 8px 12px #989393;
+}
+
+.filterWindow h1 {
+  color: rgb(4, 106, 196);
+  font-family: sans-serif;
+}
+
+.filterOptions {
+  display: flex;
+  margin-top: 30px;
+}
+
+.row div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  margin-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.row div input {
+  cursor: pointer;
+}
+
+.row select {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: grey;
+  width: 300px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.row label {
+  color: rgb(4, 106, 196);
+  margin-bottom: 5px;
+}
+
+.btnBox {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.row button {
+  background-color: rgb(4, 106, 196);
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  width: 50%;
+}
+
+/**SPECIAL OFFERS*/
+.specialOffers {
+  height: 100vh;
+  text-align: center;
+  background-color: rgb(0, 106, 255, 0.1);
+  margin-top: 50px;
+}
+.specialOffers .container {
+  overflow: hidden;
+}
+
+.specialOffers {
+  padding: 25px 0;
+}
+
+.specialOffers .container > h1 {
+  color: rgb(60, 60, 60);
+  text-align: left;
+}
+
+.specialItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+.specialItem {
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.4);
+  margin-right: 5px;
+  border-radius: 2px;
+  text-align: left;
+}
+
+.specialItem img {
+  width: 300px;
+  height: 200px;
+}
+
+.specialItem h3 {
+  color: rgb(60, 60, 60);
+  margin: 10px 0;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.location img {
+  height: 25px;
+  width: fit-content;
+}
+
+/**FILTERED ITEMS*/
+.filteredItems {
+  min-height: 700px;
+}
+
+.filteredItems .container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.filteredItems .container > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 1000px;
+  gap: 20px;
+}
+
+.item {
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.4);
+  border-radius: 2px;
+  text-align: left;
+}
+
+.imgEffect {
+  position: relative;
+}
+
+.imgEffect:hover img {
+  filter: blur(2px);
+  transition: 300ms;
+}
+
+.imgEffect:hover .moreImage {
+  transition: 300ms;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+}
+
+.imgEffect img {
+  transition: 300ms;
+  width: 300px;
+  height: 200px;
+}
+
+.moreImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 0px;
+  transform: translate(-50%, -50%);
+  background-color: blue;
+  border-radius: 50%;
+  height: 0px;
+  width: 0px;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+/**OVERLAY BIO*/
+.overlayBio {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-shadow: 0px 0px 10px 15px #fff;
+}
+
+.overlayBio button {
+  cursor: pointer;
+}
+
+.overlayBtn {
+  display: flex;
+  justify-content: right;
+  padding: 10px 10px;
+}
+
+.overlayBtn button {
+  border: none;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 200ms;
+  display: flex;
+  align-items: center;
+}
+
+.overlayBtn button span {
+  font-size: 20px;
+  display: block;
+  margin-left: 5px;
+}
+
+.overlayBtn button:hover {
+  color: rgb(4, 106, 196);
+}
+
+.overlayImg {
+  display: flex;
+  justify-content: space-between;
+  height: 380px;
+  margin-bottom: 25px;
+}
+
+.overlayImg button {
+  background-color: transparent;
+  width: 50px;
+  border: none;
+  font-weight: bold;
+  transition: 300ms;
+}
+
+.overlayMain button:hover {
+  background-color: rgba(95, 94, 94, 0.85);
+}
+
+.overlayText {
+  padding: 5px 10px;
+}
+
+.overlayText img {
+  height: 25px;
+}
+
+.overlayText h3 {
+  margin: 5px 0;
+}
+
+.itemRating {
+  background-color: rgb(4, 32, 175);
+  color: #fff;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.itemNameRating {
+  display: flex;
+}
+
+.itemNameRating h2 {
+  margin-right: 10px;
+}
+
+/**FOOTER*/
+.footer {
+  background-color: rgb(31, 31, 31);
+  padding: 25px;
+}
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  margin: 40px 0;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+}
+
+.icons img {
+  width: 45px;
+}
+
+.icon {
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.contactUs {
+  margin-top: 30px;
+}
+
+.contactUs form label {
+  display: block;
+  color: #fff;
+  margin-bottom: 1px;
+}
+
+.contactUs form textarea {
+  display: block;
+  margin-bottom: 25px;
+  width: 30%;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.contactUs form input {
+  margin-bottom: 15px;
+  width: 30%;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.contactUs form button {
+  background-color: rgb(4, 106, 196);
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  width: 20%;
+}
