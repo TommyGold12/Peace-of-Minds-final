@@ -1,0 +1,178 @@
+@media (max-width: 1024px) {
+  .filteredItems .container > div {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .bio h1 {
+    font-size: 28px;
+  }
+
+  .bio p {
+    font-size: 16px;
+  }
+
+  .findHome {
+    font-size: 18px;
+  }
+
+  .about .container h2 {
+    font-size: 28px;
+  }
+
+  .card img {
+    width: 40px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  .filterWindow h1 {
+    font-size: 28px;
+  }
+
+  .row > div {
+    font-size: 14px;
+  }
+
+  .row select {
+    width: 250px;
+  }
+
+  .imgEffect {
+    width: 250px;
+  }
+
+  .imgEffect img {
+    width: 100%;
+  }
+
+  .specialOffers .container h1 {
+    font-size: 28px;
+  }
+
+  .specialItem {
+    width: 250px;
+  }
+
+  .specialItem > img {
+    width: 100%;
+  }
+
+  .card {
+    width: 180px;
+    margin-bottom: 10px;
+  }
+  .flexCard {
+    flex-wrap: wrap;
+  }
+
+  .contactUs form input {
+    width: 60%;
+  }
+
+  .contactUs form textarea {
+    width: 60%;
+  }
+}
+@media (max-width: 600px) {
+  .row select {
+    width: 180px;
+  }
+
+  .flexCard {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 425px) {
+  .backgroundImg {
+    height: 80vh;
+  }
+
+  .backgroundImg img {
+    height: 100%;
+  }
+
+  .bio h1 {
+    font-size: 24px;
+  }
+
+  .bio p {
+    font-size: 14px;
+  }
+
+  .findHome {
+    font-size: 14px;
+  }
+
+  .navlineLinks {
+    flex-direction: column;
+    align-items: end;
+  }
+
+  .filterOptions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row div {
+    margin-bottom: 10px;
+  }
+
+  .row select {
+    width: 100%;
+  }
+  .btnBox {
+    width: 100%;
+  }
+
+  .icons img {
+    width: 30px;
+  }
+
+  .contactUs form input {
+    width: 75%;
+  }
+
+  .contactUs form textarea {
+    width: 75%;
+  }
+
+  .contactUs form button {
+    width: 30%;
+  }
+}
+
+@media (max-width: 375px) {
+  .imgEffect {
+    width: 200px;
+  }
+
+  .imgEffect img {
+    width: 100%;
+  }
+
+  .icons img {
+    width: 25px;
+  }
+
+  .contactUs form input {
+    width: 85%;
+  }
+
+  .contactUs form textarea {
+    width: 85%;
+  }
+
+  .contactUs form button {
+    width: 30%;
+  }
+}
