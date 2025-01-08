@@ -1,4 +1,5 @@
 import { useState } from "react";
+import StarRating from "./starRating";
 
 const aboutInfo = [
   {
@@ -89,11 +90,10 @@ const destination = [
 export default function App() {
   //**For future modifications */
   const [items, setItems] = useState([]);
+  const [updatedRating, setUpdatedRating] = useState();
   function handleItems(e) {
-    console.log(items);
     setItems(() => e);
   }
-
   return (
     <>
       <Navline></Navline>
@@ -105,6 +105,7 @@ export default function App() {
         bedroom={items.bedroom}
         price={items.price}
         rating={items.rating}
+        setUpdatedRating={setUpdatedRating}
       ></FilteredItems>
       <SpecialOffers></SpecialOffers>
       <Footer></Footer>
@@ -272,132 +273,62 @@ function Form({ onAddItem }) {
 }
 
 //**CREATED FILTERED ITEM */
-function FilteredItems({ location, bedroom, price, rating }) {
+function FilteredItems({
+  location,
+  bedroom,
+  price,
+  rating,
+  setUpdatedRating,
+  updatedRating,
+}) {
+  const filters = {
+    location,
+    bedroom,
+    price: Number(price),
+    rating: destination.price && rating.split("")[0],
+  };
+
+  const applyFilters = (destination) => {
+    return Object.keys(filters).every((key) => {
+      if (!filters[key]) return true;
+      if (key === "rating") {
+        return Math.round(destination.rating).toString() === filters[key];
+      }
+      if (key === "price") {
+        return destination.price <= filters[key];
+      }
+      return destination[key] === filters[key];
+    });
+  };
+
   return (
     <div className="filteredItems">
       <div className="container">
         <div>
-          {destination.map((destination) =>
-            //case 1:
-            !location &&
-            bedroom === destination.bedroom &&
-            Number(price) >= destination.price &&
-            rating.split("")[0] ===
-              Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 2:
-            !location &&
-              !bedroom &&
-              Number(price) >= destination.price &&
-              rating.split("")[0] ===
-                Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 3:
-            !location &&
-              !bedroom &&
-              !Number(price) &&
-              rating &&
-              rating.split("")[0] ===
-                Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 4: početno stanje
-            !location && !bedroom && !Number(price) && !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 5:
-            location === destination.location &&
-              bedroom === destination.bedroom &&
-              Number(price) >= destination.price &&
-              !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 6:
-            location === destination.location &&
-              bedroom === destination.bedroom &&
-              !price &&
-              !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 7:
-            location === destination.location &&
-              !bedroom &&
-              !price &&
-              !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 8:
-            location === destination.location &&
-              !bedroom &&
-              Number(price) >= destination.price &&
-              rating.split("")[0] ===
-                Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 9:
-            location === destination.location &&
-              bedroom === destination.bedroom &&
-              !price &&
-              rating.split("")[0] ===
-                Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 10:
-            location === destination.location &&
-              !bedroom &&
-              !price &&
-              rating.split("")[0] ===
-                Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 11:
-            !location &&
-              bedroom === destination.bedroom &&
-              Number(price) >= destination.price &&
-              !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 12:
-            !location &&
-              bedroom === destination.bedroom &&
-              !price &&
-              !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 13
-            !location &&
-              !bedroom &&
-              Number(price) >= destination.price &&
-              !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 14:
-            location === destination.location &&
-              !bedroom &&
-              Number(price) >= destination.price &&
-              !rating ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 15:
-            !location &&
-              bedroom === destination.bedroom &&
-              !price &&
-              rating.split("")[0] ===
-                Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : //case 16:
-            location === destination.location &&
-              bedroom === destination.bedroom &&
-              Number(price) >= destination.price &&
-              rating.split("")[0] ===
-                Math.round(destination.rating).toString() ? (
-              <Item destination={destination} key={destination.name}></Item>
-            ) : (
-              ""
-            )
-          )}
+          {destination.filter(applyFilters).map((destination) => (
+            <Item
+              setUpdatedRating={setUpdatedRating}
+              destination={destination}
+              key={destination.name}
+              updatedRating={updatedRating}
+            ></Item>
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-function Item({ destination }) {
-  const [bio, setBio] = useState("");
+//* bio- true/false, close bio element, ternary operator
+function Item({ destination, setUpdatedRating }) {
+  const [bio, setBio] = useState(null);
   function openBio(element) {
+    console.log(element);
     setBio(element);
   }
 
-  function closeBio(e) {
-    console.log(setBio([]));
+  function closeBio(element) {
+    setBio(null);
   }
   return (
     <div className="item">
@@ -417,14 +348,19 @@ function Item({ destination }) {
       </div>
       <br></br>
       <span>Price:{destination.price}€</span>
-      {bio && <Bio item={bio} onclose={closeBio}></Bio>}
+      {bio && (
+        <Bio
+          setUpdatedRating={setUpdatedRating}
+          item={bio}
+          onclose={() => closeBio(destination)}
+        ></Bio>
+      )}
     </div>
   );
 }
 
-function Bio({ item, onclose }) {
+function Bio({ item, onclose, setUpdatedRating }) {
   const [step, setStep] = useState(0);
-
   if (item.length !== 0)
     return (
       <div className="overlayBio">
@@ -445,8 +381,7 @@ function Bio({ item, onclose }) {
             ></img>
             <button
               onClick={() => {
-                const max = item.images.split(",").length - 1;
-                console.log(max);
+                const max = item.images.split(",").length - 2;
                 setStep((e) => (e === max ? (e = 0) : e + 1));
               }}
             >
@@ -456,7 +391,13 @@ function Bio({ item, onclose }) {
           <div className="overlayText">
             <div className="itemNameRating">
               <h2>{item.name}</h2>
-              <span className="itemRating">{item.rating}</span>
+              <NumberRating item={item}></NumberRating>
+            </div>
+            <div className="setItemRating">
+              <StarRating
+                item={item}
+                setUpdatedRating={setUpdatedRating}
+              ></StarRating>
             </div>
             <div className="location">
               <img alt="#" src="img/location-pin-svgrepo-com.svg"></img>
@@ -468,6 +409,11 @@ function Bio({ item, onclose }) {
         </div>
       </div>
     );
+}
+
+function NumberRating({ item }) {
+  console.log(item);
+  return <span className="itemRating">{item.rating}</span>;
 }
 
 //**SHOW MORE ITEM IMAGE */
